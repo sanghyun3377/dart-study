@@ -18,25 +18,27 @@ class Cleric {
   selfAid() {
     if (mp >= 5) {
       mp - 5;
+      print('HP ${maxHp - hp} 회복완료');
       hp = maxHp;
       print('mp 5 소모');
-      print('HP + ${maxHp - hp}');
     }
   }
 
   int pray(int secound) {
     int pluseMp = secound + Random().nextInt(3);
-    int addMp = mp + pluseMp;
-    if (addMp > maxMp) {
+    int totalMp = mp + pluseMp;
+    if (totalMp > maxMp) {
       print('현재 MP가 최대치입니다');
-      return mp = maxMp;
+      mp = maxMp;
+    } else {
+      print('MP $pluseMp 회복완료');
     }
-    print('$pluseMp 회복완료');
-    return addMp;
+    return pluseMp;
   }
 }
 
 void main() {
-  Cleric cleric = Cleric(name: 'name', hp: 49, mp: 5);
-  cleric.pray(1);
+  Cleric cleric1 = Cleric(name: 'name', hp: 32, mp: 8);
+  cleric1.selfAid();
+  cleric1.pray(1);
 }
