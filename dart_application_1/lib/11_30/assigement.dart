@@ -12,6 +12,15 @@ class Cleric {
     required this.hp,
     required this.mp,
   });
+
+  selfAid() {
+    if (mp >= 5) {
+      mp - 5;
+      hp = maxHp;
+      print('mp 5 소모');
+      print('HP + ${maxHp - hp}');
+    }
+  }
 }
 
 void main() {}
