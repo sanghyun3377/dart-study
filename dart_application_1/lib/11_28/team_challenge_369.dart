@@ -22,7 +22,6 @@ void main() {
       print('$currentPlayer:clap');
       clap++;
       clapCountsByPlayer[currentPlayerIndex]++;
-      print("이거다 $clapCountsByPlayer");
     } else {
       print('$currentPlayer: $i');
     }
