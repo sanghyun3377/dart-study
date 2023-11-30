@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:math';
+
 class Cleric {
   String name;
   int hp = 50;
@@ -21,6 +23,20 @@ class Cleric {
       print('HP + ${maxHp - hp}');
     }
   }
+
+  int pray(int secound) {
+    int pluseMp = secound + Random().nextInt(3);
+    int addMp = mp + pluseMp;
+    if (addMp > maxMp) {
+      print('현재 MP가 최대치입니다');
+      return mp = maxMp;
+    }
+    print('$pluseMp 회복완료');
+    return addMp;
+  }
 }
 
-void main() {}
+void main() {
+  Cleric cleric = Cleric(name: 'name', hp: 49, mp: 5);
+  cleric.pray(1);
+}
