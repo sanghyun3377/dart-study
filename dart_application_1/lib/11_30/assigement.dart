@@ -5,9 +5,9 @@ import 'dart:math';
 class Cleric {
   String name;
   int hp = 50;
-  final int maxHp = 50;
+  final int maxHP = 50;
   int mp = 10;
-  final int maxMp = 10;
+  final int maxMP = 10;
 
   Cleric({
     required this.name,
@@ -18,22 +18,36 @@ class Cleric {
   selfAid() {
     if (mp >= 5) {
       mp - 5;
-      print('HP ${maxHp - hp} 회복완료');
-      hp = maxHp;
+      print('HP ${maxHP - hp} 회복완료');
+      hp = maxHP;
       print('mp 5 소모');
     }
   }
 
+  // int pray(int secound) {
+  //   int pluseMp = secound + Random().nextInt(3);
+  //   int totalMp = mp + pluseMp;
+  //   if (totalMp > maxMp) {
+  //     print('현재 MP가 최대치입니다');
+  //     mp = maxMp;
+  //   } else {
+  //     print('MP $pluseMp 회복완료');
+  //   }
+  //   return pluseMp;
+  // }
+
   int pray(int secound) {
-    int pluseMp = secound + Random().nextInt(3);
-    int totalMp = mp + pluseMp;
-    if (totalMp > maxMp) {
-      print('현재 MP가 최대치입니다');
-      mp = maxMp;
-    } else {
-      print('MP $pluseMp 회복완료');
+    int bonuce = Random().nextInt(3);
+    int pluseMP = secound + bonuce;
+    int myMp = mp;
+
+    if ((mp + pluseMP) <= maxMP) {
+      mp = mp + pluseMP;
+    } else if ((mp + pluseMP) > maxMP) {
+      mp = maxMP;
     }
-    return pluseMp;
+    print('MP ${mp - myMp} 회복완료');
+    return mp - myMp;
   }
 }
 
