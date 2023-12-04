@@ -3,8 +3,8 @@
 import 'dart:math';
 
 class Cleric {
-  static final int maxHP = 50;
-  static final int maxMP = 10;
+  static const int maxHP = 50;
+  static const int maxMP = 10;
 
   String name;
   int hp;
@@ -16,7 +16,7 @@ class Cleric {
 //이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다. (이름이 없는 성직자는 존재 할 수 없음)
 //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
 
-  Cleric(this.name, {this.hp = 50, this.mp = 10});
+  Cleric(this.name, {this.hp = Cleric.maxHP, this.mp = Cleric.maxMP});
 
   //마나 5를 소비해서 체력을 채우기
   selfAid() {
@@ -46,6 +46,11 @@ class Cleric {
 
 void main() {
   Cleric cleric1 = Cleric("아서스", hp: 40, mp: 5);
-  Cleric cleric2 = Cleric("아서스", hp: 35, mp: Cleric.maxMP);
-  Cleric cleric3 = Cleric("아서스", hp: Cleric.maxHP, mp: Cleric.maxMP);
+  Cleric cleric2 = Cleric(
+    "아서스",
+    hp: 35,
+  );
+  Cleric cleric3 = Cleric(
+    "아서스",
+  );
 }

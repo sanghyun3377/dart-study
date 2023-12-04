@@ -1,23 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class Sword {
+class Human {
   String name;
-  int damage;
-  Sword({
-    required this.name,
-    required this.damage,
-  });
+  int age;
+  Human(
+    this.name,
+    this.age,
+  );
 }
 
-class Hero {
-  String name;
-  int hp;
-  Sword? sword;
-  Hero({
-    required this.name,
-    required this.hp,
-  });
-}
-void main(){
- var hero = Hero;
- hero
+void main() {
+  Human('상현', 100);
 }
