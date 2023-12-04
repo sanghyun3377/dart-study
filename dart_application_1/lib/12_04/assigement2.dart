@@ -21,18 +21,27 @@ Map<String, int> population = {
 
 class Person {
   String name;
+  int age;
   Person({
     required this.name,
+    required this.age,
   });
 }
 
 void main() {
   List personNameList = [];
-  Person person1 = Person(name: '홍길동');
-  Person person2 = Person(name: '한석봉');
+  Person person1 = Person(name: '홍길동', age: 20);
+  Person person2 = Person(name: '한석봉', age: 25);
+
+  Map<String, dynamic> nameAndAge = {
+    person1.name: person1.age,
+    person2.name: person2.age,
+  };
 
   personNameList.add(person1.name);
   personNameList.add(person2.name);
 
   print(personNameList);
+  print('${person1.name}의 나이는 ${nameAndAge['홍길동']}살');
+  print('${person2.name}의 나이는 ${nameAndAge['한석봉']}살');
 }
