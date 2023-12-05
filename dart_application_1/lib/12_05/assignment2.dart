@@ -15,6 +15,8 @@
 
 // 인터페이스
 abstract interface class Thing {
+  double _weight();
+
   double get weight;
 
   set setWeight(double weight);
@@ -28,7 +30,7 @@ abstract class Asset {
 }
 
 //유형자산 추상클래스
-abstract class TangibleAsset extends Asset {
+abstract class TangibleAsset extends Asset implements Thing {
   int price;
   String color;
 
@@ -37,8 +39,20 @@ abstract class TangibleAsset extends Asset {
     required this.price,
     required this.color,
   });
+
+  @override
+  double _weight() {
+    throw UnimplementedError();
+  }
+
+  @override
+  set setWeight(double weight) {}
+
+  @override
+  double get weight => throw UnimplementedError();
 }
 
+//유형자산 상속받은 책 클래스
 class Book extends TangibleAsset {
   String isbn;
   Book({
@@ -49,6 +63,7 @@ class Book extends TangibleAsset {
   });
 }
 
+//유형자산 상속받은 컴퓨터 클래스
 class Computer extends TangibleAsset {
   String makerName;
 
