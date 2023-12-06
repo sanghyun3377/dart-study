@@ -15,8 +15,6 @@
 
 // 인터페이스
 abstract interface class Thing {
-  double _weight();
-
   double get weight;
 
   set setWeight(double weight);
@@ -33,23 +31,20 @@ abstract class Asset {
 abstract class TangibleAsset extends Asset implements Thing {
   int price;
   String color;
+  double _weight;
 
-  TangibleAsset({
-    required super.name,
-    required this.price,
-    required this.color,
-  });
-
-  @override
-  double _weight() {
-    throw UnimplementedError();
-  }
+  TangibleAsset(
+      {required super.name,
+      required this.price,
+      required this.color,
+      required weight})
+      : _weight = weight;
 
   @override
-  set setWeight(double weight) {}
+  set setWeight(double v) {}
 
   @override
-  double get weight => throw UnimplementedError();
+  double get weight => _weight;
 }
 
 //유형자산 상속받은 책 클래스
@@ -60,6 +55,7 @@ class Book extends TangibleAsset {
     required super.name,
     required super.price,
     required super.color,
+    required super.weight,
   });
 }
 
@@ -72,5 +68,6 @@ class Computer extends TangibleAsset {
     required super.color,
     required super.name,
     required super.price,
+    required super.weight,
   });
 }

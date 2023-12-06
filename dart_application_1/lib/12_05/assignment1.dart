@@ -43,9 +43,9 @@ class PoisonSlime extends Slime {
     if (poisonAttack > 0) {
       print("추가로, 독 포자를 살포했다!");
       _poisonAttack -= 1;
-      var poisonDemage = (hero.hp / 5);
-      hero.hp -= poisonDemage.toInt();
-      print('$poisonDemage포인트의 데미지');
+      var poisonDamage = (hero.hp / 5).round();
+      hero.hp -= poisonDamage.toInt();
+      print('$poisonDamage포인트의 데미지');
     }
   }
 }
