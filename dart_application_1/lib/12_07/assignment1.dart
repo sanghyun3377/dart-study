@@ -66,4 +66,8 @@ void main() {
   print('출간일기준으로 정렬순서변경');
   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
   print(books);
+
+  Book book6 = Book(title: '딥카피대상', comment: '원본');
+  Book book7 = book6.copyWith();
+  print(book6 == book7);
 }
