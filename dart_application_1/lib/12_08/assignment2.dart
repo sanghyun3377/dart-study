@@ -32,4 +32,15 @@ void main() {
 
   var res2 = Word().isConsonant(5);
   print(res2);
+
+  final s1 = ' Dart and Flutter';
+  print(s1.contains('Flutter')); // true (포함관계)
+  print(s1.endsWith('Flutter')); //true (끝나는 단어가 맞는지)
+  print(s1.indexOf('t')); // 13 (뒤에서 몇번째에 단어가 있는지
+  print(s1.trim()); // 좌우 공백 제거
+
+  String text1 = 'apple';
+  String text2 = 'banana';
+  int result = text2.compareTo(text1);
+  print(result);
 }
