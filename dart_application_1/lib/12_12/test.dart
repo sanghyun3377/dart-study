@@ -1,95 +1,107 @@
-import 'package:intl/intl.dart';
+class Data {
+  List<CollectionChartDataList>? _collectionChartDataList;
 
-class YukymController {
-  // DateTime.parse(_userData.value!.selectDate)
-  String nowDate = DateFormat('yyyy-mm-dd').format(DateTime.now());
-
-  late String nowTime;
-
-  // 1. 자시의 국 : 갑자1국 = getTyOne()의 값
-  String getTyA() {
-    List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
-
-    if (timeDataOne.isNotEmpty) {
-      nowTime = timeDataOne.first.ty1;
-
-      final month = nowDate.substring(5, 7);
-      if (month == '01' || month == '02') {
-        return '경오1국';
-      } else if (month == '03' || month == '04') {
-        return '경오2국';
-      } else if (month == '05' || month == '06') {
-        return '경오3국';
-      } else if (month == '07' || month == '08') {
-        return '경오4국';
-      } else if (month == '09' || month == '10') {
-        return '경오5국';
-      } else if (month == '11' || month == '12') {
-        return '경오6국';
-      }
-      return nowTime;
-    } else {
-      // Handle the case when the list is empty
-      return '경오7국'; // Or any other appropriate action
+  Data({List<CollectionChartDataList>? collectionChartDataList}) {
+    if (collectionChartDataList != null) {
+      this._collectionChartDataList = collectionChartDataList;
     }
   }
 
-  String getTyB() {
-    List<YukymTimeModel> timeDataOne = _getTimeDataOne(nowDate);
-    String result = timeDataOne.first.ty12;
+  List<CollectionChartDataList>? get collectionChartDataList =>
+      _collectionChartDataList;
+  set collectionChartDataList(
+          List<CollectionChartDataList>? collectionChartDataList) =>
+      _collectionChartDataList = collectionChartDataList;
 
-    final nowTime = DateTime.now();
-    if (nowTime.hour >= 0 || nowTime.hour < 2) {
-      return timeDataOne.first.ty1;
-    } else if (nowTime.hour >= 4 || nowTime.hour < 6) {
-      return timeDataOne.first.ty2;
-    } else if (nowTime.hour >= 6 || nowTime.hour < 8) {
-      return timeDataOne.first.ty3;
-    } else if (nowTime.hour >= 8 || nowTime.hour < 10) {
-      return timeDataOne.first.ty4;
-    } else if (nowTime.hour >= 10 || nowTime.hour < 12) {
-      return timeDataOne.first.ty5;
-    } else if (nowTime.hour >= 12 || nowTime.hour < 14) {
-      return timeDataOne.first.ty6;
-    } else if (nowTime.hour >= 16 || nowTime.hour < 18) {
-      return timeDataOne.first.ty7;
-    } else if (nowTime.hour >= 18 || nowTime.hour < 20) {
-      return timeDataOne.first.ty8;
-    } else if (nowTime.hour >= 20 || nowTime.hour < 22) {
-      return timeDataOne.first.ty9;
-    } else if (nowTime.hour >= 22 || nowTime.hour < 24) {
-      return timeDataOne.first.ty10;
+  Data.fromJson(Map<String, dynamic> json) {
+    if (json['collectionChartDataList'] != null) {
+      _collectionChartDataList = <CollectionChartDataList>[];
+      json['collectionChartDataList'].forEach((v) {
+        _collectionChartDataList!.add(new CollectionChartDataList.fromJson(v));
+      });
     }
-
-    return result;
   }
 
-  List<YukymTimeModel> _getTimeDataOne(String nowDate) {
-    List<YukymTimeModel> timeDataOne = [];
-    for (int i = 0; i < 24; i++) {
-      timeDataOne.add(YukymTimeModel());
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this._collectionChartDataList != null) {
+      data['collectionChartDataList'] =
+          this._collectionChartDataList!.map((v) => v.toJson()).toList();
     }
-    return timeDataOne;
+    return data;
   }
 }
 
-class YukymTimeModel {
-  String ty1 = '갑자1국';
-  String ty2 = '갑자2국';
-  String ty3 = '갑자3국';
-  String ty4 = '갑자4국';
-  String ty5 = '갑자5국';
-  String ty6 = '갑자6국';
-  String ty7 = '갑자7국';
-  String ty8 = '갑자8국';
-  String ty9 = '갑자9국';
-  String ty10 = '갑자10국';
-  String ty11 = '갑자11국';
-  String ty12 = '갑자12국';
+class CollectionChartDataList {
+  String? _collectionName;
+  List<CollectionSalePrice>? _collectionSalePrice;
+
+  CollectionChartDataList(
+      {String? collectionName,
+      List<CollectionSalePrice>? collectionSalePrice}) {
+    if (collectionName != null) {
+      this._collectionName = collectionName;
+    }
+    if (collectionSalePrice != null) {
+      this._collectionSalePrice = collectionSalePrice;
+    }
+  }
+
+  String? get collectionName => _collectionName;
+  set collectionName(String? collectionName) =>
+      _collectionName = collectionName;
+  List<CollectionSalePrice>? get collectionSalePrice => _collectionSalePrice;
+  set collectionSalePrice(List<CollectionSalePrice>? collectionSalePrice) =>
+      _collectionSalePrice = collectionSalePrice;
+
+  CollectionChartDataList.fromJson(Map<String, dynamic> json) {
+    _collectionName = json['collectionName'];
+    if (json['collectionSalePrice'] != null) {
+      _collectionSalePrice = <CollectionSalePrice>[];
+      json['collectionSalePrice'].forEach((v) {
+        _collectionSalePrice!.add(new CollectionSalePrice.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['collectionName'] = this._collectionName;
+    if (this._collectionSalePrice != null) {
+      data['collectionSalePrice'] =
+          this._collectionSalePrice!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-void main() {
-  YukymController data = YukymController();
-  print(data.getTyA());
-  print(data.getTyB());
+class CollectionSalePrice {
+  double? _price;
+  String? _cvtDatetime;
+
+  CollectionSalePrice({double? price, String? cvtDatetime}) {
+    if (price != null) {
+      this._price = price;
+    }
+    if (cvtDatetime != null) {
+      this._cvtDatetime = cvtDatetime;
+    }
+  }
+
+  double? get price => _price;
+  set price(double? price) => _price = price;
+  String? get cvtDatetime => _cvtDatetime;
+  set cvtDatetime(String? cvtDatetime) => _cvtDatetime = cvtDatetime;
+
+  CollectionSalePrice.fromJson(Map<String, dynamic> json) {
+    _price = json['price'];
+    _cvtDatetime = json['cvtDatetime'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['price'] = this._price;
+    data['cvtDatetime'] = this._cvtDatetime;
+    return data;
+  }
 }
