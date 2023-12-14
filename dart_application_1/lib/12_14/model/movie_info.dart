@@ -51,4 +51,9 @@ class MovieInfo {
       voteCount: json['vote_count'] as int,
     );
   }
+
+  @override
+  String toString() {
+    return 'MovieInfo(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+  }
 }
