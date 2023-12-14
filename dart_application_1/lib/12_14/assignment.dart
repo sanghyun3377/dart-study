@@ -9,11 +9,12 @@ Future<List<MovieInfo>> getMovieInfo() async {
   var response = await http.get(url);
   var json = jsonDecode(response.body);
   print(json);
-  var movieInfo = json['results'] as List<dynamic>;
+  List<dynamic> movieInfo = json['results'];
   var data = movieInfo.map((e) => MovieInfo.fromJson(e)).toList();
   return data;
 }
 
-void main() {
-  getMovieInfo();
+void main() async {
+  var data = await getMovieInfo();
+  print(data[0].id);
 }
