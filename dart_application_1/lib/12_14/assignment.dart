@@ -9,7 +9,7 @@ Future<List<MovieInfo>> getMovieInfo() async {
   var response = await http.get(url);
   var json = jsonDecode(response.body);
   print(json);
-  List<dynamic> movieInfo = json['results'];
+  var movieInfo = json['results'] as List<dynamic>;
   var data = movieInfo.map((e) => MovieInfo.fromJson(e)).toList();
   return data;
 }

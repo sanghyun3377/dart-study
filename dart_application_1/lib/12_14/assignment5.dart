@@ -25,9 +25,21 @@ printDownloadInfo(Future<Uint8List> function) async {
 }
 
 void main() async {
-  await printDownloadInfo(downloadImage('https://alimipro.com/favicon.ico'));
+  var stopWatch = Stopwatch()..start();
+  await downloadImage('https://alimipro.com/favicon.ico');
   await downloadImage(
       'https://images.unsplash.com/photo-1702325250074-28bc0f34646e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   await downloadImage(
       'https://images.unsplash.com/photo-1695653422536-d1e9d449ce7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  stopWatch.start();
+  print('순차적으로 다운받는 시간 : ${stopWatch.elapsed}');
+
+  var stopWatch2 = Stopwatch()..start();
+  downloadImage('https://alimipro.com/favicon.ico');
+  downloadImage(
+      'https://images.unsplash.com/photo-1702325250074-28bc0f34646e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  downloadImage(
+      'https://images.unsplash.com/photo-1695653422536-d1e9d449ce7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  stopWatch.start();
+  print('동시에 다운받는 시간 : ${stopWatch2.elapsed}');
 }
