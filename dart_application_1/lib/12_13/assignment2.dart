@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
+//API
 Future<String> getMovieInfo() async {
   await Future.delayed(Duration(seconds: 2));
   final mockData = {
@@ -11,6 +11,7 @@ Future<String> getMovieInfo() async {
   return jsonEncode((mockData));
 }
 
+//model
 class MockData {
   String title;
   String director;

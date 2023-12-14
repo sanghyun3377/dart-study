@@ -12,7 +12,7 @@ Future readSample() async {
       var res = data.replaceAll('한석봉', '김석봉');
       await sampleCopy.writeAsString(res);
     }
-  } catch (e) {
+  } on FileSystemException catch (e) {
     print('에러발생 : $e');
   }
 }
