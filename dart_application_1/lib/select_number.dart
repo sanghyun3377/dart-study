@@ -38,46 +38,57 @@ int number37 = 100;
 int number38 = 100;
 int number39 = 100;
 
-List students = [
-  number2,
-  number3,
-  number4,
-  number6,
-  number7,
-  number8,
-  number9,
-  number11,
-  number12,
-  number13,
-  number15,
-  number16,
-  number17,
-  number18,
-  number20,
-  number21,
-  number22,
-  number23,
-  number24,
-  number26,
-  number27,
-  number28,
-  number29,
-  number30,
-  number31,
-  number32,
-  number33,
-  number34,
-  number35,
-  number36,
-  number37,
-  number38,
-  number39,
+List<Map<String, int>> students = [
+  {' number2': 100},
+  {' number3': 100},
+  {' number4': 100},
+  {' number6': 100},
+  {' number7': 100},
+  {' number8': 100},
+  {' number9': 100},
+  {'number11': 100},
+  {'number12': 100},
+  {'number13': 100},
+  {'number15': 100},
+  {'number16': 100},
+  {'number17': 100},
+  {'number18': 100},
+  {'number20': 100},
+  {'number21': 100},
+  {'number22': 100},
+  {'number23': 100},
+  {'number24': 100},
+  {'number26': 100},
+  {'number27': 100},
+  {'number28': 100},
+  {'number29': 100},
+  {'number30': 100},
+  {'number31': 100},
+  {'number32': 100},
+  {'number33': 100},
+  {'number34': 100},
+  {'number35': 100},
+  {'number36': 100},
+  {'number37': 100},
+  {'number38': 100},
+  {'number39': 100},
 ];
+
 void main() {
+  print(students);
+  var randomNumber = Random().nextInt(100);
   double addAllOdds = 0;
-  for (int e in students) {
-    addAllOdds += e;
-    addAllOdds = addAllOdds / (students.length + 1);
-  }
+  double probability1Point = 0;
+
+  // for (int e in students[]) {
+  //   addAllOdds += e;
+  // }
+  // probability1Point = 100 / addAllOdds;
+  // for (int e in students) {
+  //   if (randomNumber < e * probability1Point) {
+  //     print(e);
+  //   }
+  // }
+
   print(addAllOdds);
 }
